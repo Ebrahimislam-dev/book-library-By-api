@@ -10,12 +10,12 @@
     <title>Book Archive</title>
 </head>
 
-<body class="container">
+<body class="container" style= "background: linear-gradient(to right, #abbaab, #ffffff);">
     <header>
-        <h2 class=" text-center text-success fw-bold mt-5 ">Search your favourit Book</h2>
+        <h2 class=" text-center text-success fw-bold mt-5 ">Search Your Favourit Book</h2>
         <div class="input-group mb-3 w-50  my-5 mx-auto">
 
-            <input type="text" id="search-field" class="form-control" placeholder="Input a Book name to get"
+            <input type="text" id="search-field" class="form-control" placeholder="Input a Book name to get your desire Book"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button onclick="searchbook()" class="btn btn-outline-secondary" type="button"
                 id="button-search">Search</button>
@@ -25,12 +25,13 @@
     <main>
         <section>
             <div>
-                <p id="error-msg" class="text-center text-warning fs-2 " style="display: none;">Please write something
+                <p id="error-msg" class="text-center text-danger fw-bolder fs-2 " style="display: none;">
+                    Make sure that all words are spelled correctly, or try a different search.
                 </p>
-                <p id="search-msg" class="text-center text-success fs-2 "></p>
+                <p id="search-msg" class="text-center text-success fw-bold fs-2 "></p>
             </div>
             <div id="total-search" class="text-center text-success fs-1 ">
-                
+
             </div>
             <div id="search-result" class="mt-5 row row-cols-2 row-cols-md-3 g-4">
 
