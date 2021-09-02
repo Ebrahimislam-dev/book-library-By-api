@@ -12,6 +12,10 @@ const searchbook = () => {
     }
 
     else {
+        //
+        toggleSpinner('visible');
+        toggleSearchResult('hidden');
+        //
         document.getElementById('search-msg').innerText = `Your ${searchText} books are`
         document.getElementById('error-msg').style.display = "none";
         // load data    
@@ -22,12 +26,23 @@ const searchbook = () => {
             .then(data => displaySearchResult(data.docs));
     }
 }
+//
+const toggleSpinner = displayStyle => {
+    document.getElementById('spinner').style.visibility = displayStyle;
+}
+const toggleSearchResult = displayStyle => {
+    document.getElementById('search-result').style.visibility = displayStyle;
+    document.getElementById('total-search').style.visibility = displayStyle;
+}
+//
+
+
 const displaySearchResult = books => {
 
     const searchresultDiv = document.getElementById('search-result');
     searchresultDiv.textContent = "";
     const booksNumber = books.length;
-    document.getElementById('total-search').innerHTML = `<h4 class=" fw-bold text-center">About ${booksNumber} Results Found.....</h4>`;
+    document.getElementById('total-search').innerHTML = `<h4 class=" fw-bold text-center">About ${booksNumber} Books are Found.....</h4>`;
 
     if (books.length === 0) {
         alert("no books found")
@@ -46,15 +61,17 @@ const displaySearchResult = books => {
           </div>
           <div class="col-md-8">
                 <div class="card-body">
-                    <h4 class=" fw-bold">${book.title? book.title:"Not found"}</h4>
-                    <h6>Author: ${book.author_name ? book.author_name:"Not found"}</h6>
-                    <h6>Publisher: ${book.publisher ? book.publisher:"Not found"}</h6>
-                    <p >Publish Year: ${book.first_publish_year ? book.first_publish_year:"Not found"}</p>
+                    <h4 class=" fw-bold">${book.title ? book.title : "Not found"}</h4>
+                    <h6>Author: ${book.author_name ? book.author_name : "Not found"}</h6>
+                    <h6>Publisher: ${book.publisher ? book.publisher : "Not found"}</h6>
+                    <p >Publish Year: ${book.first_publish_year ? book.first_publish_year : "Not found"}</p>
                 </div>
           </div>
         </div>
      </div>`;
         searchresultDiv.appendChild(div)
 
-    })
+    });
+    toggleSpinner('hidden');
+    toggleSearchResult('visible');
 }
